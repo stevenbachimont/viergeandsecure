@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Graffiti Jam API
+  description: API for Graffiti Jam project
+  version: 1.0.0
+
+paths:
+  /users:
+    get:
+      summary: Get all users
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    alias:
+                      type: string
+                    email:
+                      type: string
+                    profile_picture:
+                      type: string
+                    is_admin:
+                      type: boolean
+                    is_verify:
+                      type: boolean
+
+
+  /users/{userId}:
+    get:
+      summary: Get a user by ID
+      operationId: getUserById
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  alias:
+                    type: string
+                  email:
+                    type: string
+                  profile_picture:
+                    type: string
+                  is_admin:
+                    type: boolean
+                  is_verify:
+                    type: boolean
+        '404':
+          description: User not found
+
+  /arts:
+    get:
+      summary: Get all arts
+      operationId: getAllArts
+      responses:
+        '200':
+          description: A list of arts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    user_id:
+                      type: integer
+                    is_verify:
+                      type: boolean
+                    img_date:
+                      type: string
+                      format: date
+                    artist:
+                      type: string
+                    style:
+                      type: string
+                    image:
+                      type: string
+                    image_alt:
+                      type: string
+                    gps_lat:
+                      type: number
+                      format: float
+                    gps_long:
+                      type: number
+                      format: float
+                    hood_id:
+                      type: integer
+                    size:
+                      type: string
+                    still_up:
+                      type: boolean
+                    verifier_by:
+                      type: string
+                    graffiti_date:
+                      type: string
+                      format: date
+                    zone:
+                      type: integer

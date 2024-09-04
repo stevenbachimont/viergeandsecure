@@ -1,0 +1,214 @@
+/* CSS Mobile first */
+
+/* Profile Picture Styling */
+.profile-picture {
+  width: 100%; /* Increase width for a larger profile picture */
+  height: 100%; /* Adjust height to make it rectangular */
+  border-radius: 15px; /* Rounded corners */
+  object-fit: cover; /* Ensure the image fits well */
+}
+
+/* Container for Profile Picture and Information */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+}
+
+/* Styling for Alias Container */
+.alias-container {
+  background-color: #535252;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 300px;
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+}
+
+/*
+
+ display: flex;
+  flex-direction: column;
+  background-color: #535252;
+  border-radius: 10px;
+  width: 50%;
+  padding: 10px;
+
+*/
+
+.geek-level-container {
+  background-color: #535252;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 300px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+/* Indicators for Geek Level */
+.level-indicators {
+  display: flex;
+  margin-top: 0.5em;
+}
+
+/* Individual Geek Level Indicator */
+.level-indicator {
+  width: 20px;
+  height: 30px;
+  border: 2px solid #3498db;
+  margin: 0.25em;
+  background-color: #3498db;
+}
+
+/* Disconnect Button Styling */
+.disconnect-button {
+  padding: 12px 12px; /* Agrandir légèrement le bouton */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  display: block; /* Pour centrer horizontalement */
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.disconnect-button:hover {
+  background-color: #e42e2e;
+}
+
+.disconnect-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Badges Container Styling */
+.badges-container {
+  background-color: #535252;
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 300px;
+  margin: auto;
+}
+
+/*
+  background-color: #535252;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+  */
+
+/* Heading for Badges */
+.badges-heading {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* List of Badges */
+.badges-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Individual Badge Item */
+.badge-item {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Badge Name */
+.badge-item p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Badge Image */
+.badge-img {
+  max-width: 100px; /* Adjust as needed */
+  margin-top: 10px;
+}
+
+/* Badge Scenario or Description */
+.badge-item p:nth-child(3) {
+  margin-top: 5px;
+}
+
+/* Badge Level */
+.badge-item p:nth-child(4) {
+  margin-top: 5px;
+}
+
+/* Drop Area Styling */
+.profile-picture-container {
+  width: 50%;
+  max-width: 300px;
+
+  /* Maximum height */
+  border: 2px dashed #2c3e50; /* Dashed border for the drop area */
+  border-radius: 15px; /* Rounded corners */
+  transition: border-color 0.3s; /* Smooth border color transition */
+  /* Center profile picture */
+  margin: auto;
+}
+
+.profile-picture-container.drag-over {
+  border-color: #e42e2e; /* Change border color when dragging over */
+}
+
+/* Styles for larger screens */
+@media (min-width: 768px) {
+  .profile-container {
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2em;
+  }
+
+  .profile-picture {
+    width: 25vw;
+    height: 15vw; /* Adjust height to maintain rectangular shape */
+    max-width: 250px;
+    max-height: 150px;
+  }
+
+  .profile-picture-container {
+    width: 25vw;
+    height: 15vw; /* Adjust height to match profile picture size */
+    max-width: 250px;
+    max-height: 150px;
+  }
+
+  .alias-container {
+    padding: 1em;
+    margin-top: 0;
+  }
+
+  .geek-level-container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .geek-level-text {
+    margin-right: 1em;
+  }
+
+  .level-indicator {
+    width: 30px;
+    height: 50px;
+    margin: 0.5em;
+  }
+}

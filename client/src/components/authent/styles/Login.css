@@ -1,0 +1,43 @@
+/* Form container */
+#loginForm {
+  background-color: #535252;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  max-width: 300px;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* Form group (label + input) */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Input fields */
+
+#password {
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* Form buttons */
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 45%;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+}
