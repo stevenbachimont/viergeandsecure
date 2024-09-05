@@ -1,4 +1,4 @@
-# JS-Nantes-RamCSS-P3-GraffitiJam
+# Vierge & Secure
 
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
 It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
@@ -85,3 +85,97 @@ To add it during deployment, follow these 2 steps:
 
 If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
 Then, go on your specific project and run  `docker compose logs -t -f`.
+
+
+
+
+#version française
+# Vierge & Sécurisé
+
+Ce projet utilise Harmonia. Harmonia est un framework destiné à servir de base pour tout projet suivant la stack React-Express-MySQL, comme appris à la Wild Code School.
+Il est préconfiguré avec un ensemble d'outils qui aideront les étudiants à produire un code de qualité industrielle et plus facile à maintenir, tout en restant un outil pédagogique.
+
+## Installation & Utilisation
+
+**Utilisateurs Windows :** assurez-vous d'exécuter ces commandes dans un terminal git pour éviter [les problèmes avec les formats de nouvelle ligne](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats) :
+
+```
+git config --global core.eol lf
+git config --global core.autocrlf false
+```
+
+
+- Dans VSCode, installez les plugins **Prettier - Code formatter** et **ESLint** et configurez-les
+- Clonez ce dépôt, entrez dedans
+- Exécutez la commande `npm install`
+- Créez des fichiers d'environnement (`.env`) dans `server` et `client` : vous pouvez copier les fichiers `.env.sample` comme point de départ (**ne** les supprimez pas)
+
+### Commandes Disponibles
+
+- `db:migrate` : Exécute le script de migration de la base de données
+- `db:seed` : Exécute le script de peuplement de la base de données
+- `dev` : Démarre les deux serveurs (client + serveur) dans un terminal
+- `dev:client` : Démarre le client React
+- `dev:back` : Démarre le serveur Express
+- `lint` : Exécute les outils de validation (sera exécuté à chaque _commit_, et refusera le code non propre)
+
+## FAQ
+
+### Outils
+
+- _Concurrently_ : Permet à plusieurs commandes de s'exécuter simultanément dans le même CLI
+- _Husky_ : Permet d'exécuter des commandes spécifiques qui se déclenchent sur des événements _git_
+- _Vite_ : Alternative à _Create-React-App_, empaquetant moins d'outils pour une expérience plus fluide
+- _ESLint_ : Outil de "qualité du code", assure que les règles choisies seront appliquées
+- _Prettier_ : Outil de "qualité du code" également, se concentre sur le style de code
+- _Airbnb Standard_ : L'un des "standards" les plus connus, bien qu'il ne soit pas officiellement lié à ES/JS
+
+## Déploiement avec Traefik
+
+> ⚠️ Prérequis : Vous devez avoir installé et configuré Traefik sur votre VPS au préalable.
+> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
+
+Pour le déploiement, vous devez aller dans `secrets` → app `actions` sur le dépôt github pour insérer via `New repository secret` :
+
+- SSH_HOST : Adresse IP de votre VPS
+- SSH_USER : Login SSH pour votre VPS
+- SSH_PASSWORD : Mot de passe de connexion SSH pour votre VPS
+
+Et une variable publique depuis l'onglet `/settings/variables/actions` :
+
+- PROJECT_NAME : le nom du projet utilisé pour créer le sous-domaine.
+
+> ⚠️ Attention : les underscores ne sont pas autorisés. Ils peuvent causer des problèmes avec le certificat let's encrypt
+
+Utilisez cet onglet pour ajouter les autres variables d'environnement requises pour le projet si nécessaire.
+
+Seul le serveur sera accessible. Le chemin racine `"/"` redirigera vers le dossier dist de votre client. Pour permettre cela, veuillez décommenter la ligne comme expliqué dans `server/src/app.js` (Ligne 102).
+Parce que le serveur servira également le client, la variable globale VITE_SERVER_URL sera définie avec une chaîne vide.
+
+Votre URL sera `https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
+
+### À propos de la base de données
+
+La base de données est automatiquement déployée avec le nom de votre dépôt. Pendant la construction du projet (`docker-entry.sh`), la commande `node migrate.js` est exécutée dans le serveur. Si vous souhaitez peupler automatiquement votre base de données en utilisant le script `seed.js`, remplacez `cd ./server && node ./bin/migrate.js && node index.js` par `cd ./server && node ./bin/migrate.js && node ./bin/seed.js && node index.js`
+
+### À propos des ressources publiques (images, polices...)
+
+N'utilisez pas de dossier public sur votre client. Ce dossier ne sera pas accessible en ligne. Vous pouvez déplacer vos ressources publiques dans le dossier `server/public`. Préférez [les ressources statiques](https://vitejs.dev/guide/assets) lorsque c'est possible.
+
+### À propos des Variables d'Environnement Spécifiques (par exemple, Email)
+
+Les étudiants doivent utiliser le modèle fourni dans le fichier `*.env.sample*` comme `<PROJECT_NAME><SPECIFIC_NAME>=<THE_VARIABLE>`.
+
+> ⚠️ **Attention :** Le `PROJECT_NAME` doit correspondre à celui utilisé dans la variable publique Git.
+
+Pour l'ajouter lors du déploiement, suivez ces 2 étapes :
+
+- Ajoutez la variable suivante au fichier `docker-compose.prod.yml` (comme montré dans l'exemple : `PROJECT_NAME_SPECIFIC_NAME: ${PROJECT_NAME_SPECIFIC_NAME}`).
+- Connectez-vous à votre serveur via SSH. Ouvrez le fichier `.env` global dans Traefik (`nano ./traefik/data/.env`). Ajoutez la variable avec la valeur correcte et enregistrez le fichier.
+- Ensuite, vous pouvez initier le déploiement automatique. Docker ne se rafraîchira pas pendant ce processus.
+
+### À propos des Logs
+
+Si vous souhaitez accéder aux logs de votre projet en ligne (pour suivre le déploiement ou pour observer toute erreur), connectez-vous à votre VPS (`ssh user@host`).
+Ensuite, allez sur votre projet spécifique et exécutez `docker compose logs -t -f`.
+
