@@ -21,24 +21,28 @@ services:
     depends_on:
       database:
         condition: service_healthy
+    networks:
+      - app-network
 
   database:
     image: mysql/mysql-server:8.0
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uuser", "-ppassword" ] # Command to check health.
-      interval: 5s # Interval between health checks.
-      timeout: 5s # Timeout for each health checking.
-      retries: 20 # Hou many times retries.
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-uuser", "-ppassword" ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
       start_period: 10s
     volumes:
       - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
-    #      - db-data:/var/lib/mysql
     environment:
       MYSQL_USER: steven
       MYSQL_PASSWORD: petruchka
-      # Password for root access
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
-      - target: 3306
-        published: 3306
-        protocol: tcp
+      - "3306:3306"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
