@@ -18,10 +18,18 @@ services:
       DB_PASSWORD: petruchka
       DB_NAME: viergeandsecure
       VITE_BACKEND_URL: "http://web:3310"
-
     depends_on:
       database:
         condition: service_healthy
+    networks:
+      - app-network
+
+  client:  # Utiliser le bon répertoire pour le client
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_BACKEND_URL: "http://localhost:3310"
     networks:
       - app-network
 
@@ -29,7 +37,6 @@ services:
     image: mysql/mysql-server:8.0
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-usteven", "-ppetruchka" ]
-
       interval: 5s
       timeout: 5s
       retries: 20
