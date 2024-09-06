@@ -14,9 +14,9 @@ services:
       APP_SECRET: 123456789
       DB_HOST: database
       DB_PORT: 3306
-      DB_USER: user
-      DB_PASSWORD: password
-      DB_NAME: js_template_fullstack
+      DB_USER: steven
+      DB_PASSWORD: petruchka
+      DB_NAME: viergeandsecure
       VITE_BACKEND_URL: ""
     depends_on:
       database:
@@ -34,8 +34,8 @@ services:
       - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
     #      - db-data:/var/lib/mysql
     environment:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_USER: steven
+      MYSQL_PASSWORD: petruchka
       # Password for root access
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:

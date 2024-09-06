@@ -3,13 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "description": "",
-  "homepage": "https://github.com/WildCodeSchool/JS-Nantes-RamCSS-P3-PoPote#readme",
+  "homepage": "",
   "bugs": {
-    "url": "https://github.com/WildCodeSchool/JS-Nantes-RamCSS-P3-PoPote/issues"
+    "url": ""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WildCodeSchool/JS-Nantes-RamCSS-P3-PoPote.git"
+    "url": ""
   },
   "workspaces": ["client", "server"],
   "scripts": {
