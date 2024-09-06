@@ -3,6 +3,9 @@ version: "3.4"
 services:
   web:
     build: .
+    env_file:
+      - ./client/.env
+      - ./server/.env
     volumes:
       - .:/var/www
       - ./docker-entry.sh:/etc/entrypoint.sh
