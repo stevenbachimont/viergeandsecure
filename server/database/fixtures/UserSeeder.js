@@ -17,10 +17,10 @@ class UserSeeder extends AbstractSeeder {
         is_verify: 0,
       },
       {
-        alias: "steven",
-        email: "stev.bach@example.com",
+        alias: "kiki",
+        email: "kiki@example.com",
         hashed_password:
-          "$argon2id$v=19$m=19456,t=2,p=1$cX8MgcA4iMKrhGQDvjlhAg$mG4VqjY1vonuXmNpMkexBmW3r4V7nsoitrrUpT9vDEc",
+          "$argon2id$v=19$m=19456,t=2,p=1$Vcy/8DFEKd2/aiCXB8ERnQ$VXq2S0ln0XJKTsds7XDKHpoT3wIzSNQAQ5QJTXrg22U",
         profile_picture: "http://localhost:3310/uploadsAvatars/cinq.jpg",
         is_admin: 1,
         is_verify: 1,
