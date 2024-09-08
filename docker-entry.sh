@@ -8,3 +8,6 @@ do
 done
 
 cd ./server && node ./bin/migrate.js && node ./bin/seed.js && node index.js
+
+echo "Database is ready, starting the server... let's go !!!"
+

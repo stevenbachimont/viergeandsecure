@@ -41,10 +41,10 @@
   font: 12em "GANG BANG CRIME";
   font-size: 3rem;
   text-align: center;
-  color: #e42e2e;
+  color: #f3f3f3;
   text-shadow:
-    1px -1px #091d97,
-    5px -5px #011a68;
+    1px -1px #37393c,
+    5px -5px #323235;
 }
 
 .auth li {
