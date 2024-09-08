@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConnexionContext } from "../Contextes/ConnexionContexte";
@@ -22,10 +21,12 @@ function Profile() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    setProfilePicture(initialProfilePicture);
+    if (initialProfilePicture) {
+      setProfilePicture(initialProfilePicture);
+    } else {
+      console.error("No initial profile picture found.");
+    }
   }, [initialProfilePicture]);
-
-
 
   const uploadAvatar = async (file) => {
     if (!token) {
@@ -75,7 +76,7 @@ function Profile() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text(); // Use text() to handle non-JSON responses
+        const errorText = await response.text();
         console.error("Error updating user data:", errorText);
         throw new Error(errorText);
       }
@@ -105,12 +106,12 @@ function Profile() {
           };
 
           await updateUserData(userData);
-          updateProfilePicture(newProfilePictureUrl); // Update the context
+          updateProfilePicture(newProfilePictureUrl);
         }
       } catch (error) {
         console.error(
-          "Error uploading profile picture or updating user data:",
-          error
+            "Error uploading profile picture or updating user data:",
+            error
         );
       }
     } else {
@@ -133,41 +134,39 @@ function Profile() {
   };
 
   return (
-    <main>
-      <div
-        className={`profile-picture-container ${dragOver ? "drag-over" : ""}`}
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-      >
-        {profilePicture && (
-          <img
-            src={profilePicture}
-            alt={`${alias}'s avatar`}
-            className="profile-picture"
-          />
-        )}
-      </div>
-      <div className="infos-profile-container">
-        <div className="alias-container">
-          {isConnected && <h2 className="alias-text">Alias: {alias}</h2>}
+      <main>
+        <div
+            className={`profile-picture-container ${dragOver ? "drag-over" : ""}`}
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+        >
+          {profilePicture ? (
+              <img
+                  src={profilePicture}
+                  alt={`${alias}'s avatar`}
+                  className="profile-picture"
+              />
+          ) : (
+              <p>No profile picture available</p>
+          )}
         </div>
+        <div className="infos-profile-container">
+          <div className="alias-container">
+            {isConnected && <h2 className="alias-text">Alias: {alias}</h2>}
+          </div>
 
-
-
-
-
-        <div className="disconnect-button-container">
-          <button
-            className="disconnect-button"
-            onClick={handleDisconnect}
-            type="button"
-          >
-            Disconnect
-          </button>
+          <div className="disconnect-button-container">
+            <button
+                className="disconnect-button"
+                onClick={handleDisconnect}
+                type="button"
+            >
+              Disconnect
+            </button>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
   );
 }
 
