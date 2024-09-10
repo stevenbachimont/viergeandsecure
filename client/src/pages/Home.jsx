@@ -7,15 +7,7 @@ function Home() {
       <section className="pres">
         <h1 className="titre">homepage</h1>
 
-        <p>
-          Template vide.
-        </p>
-        <p>
-         Complêtez à votre guise.
-        </p>
       </section>
-
-
 
       <section className="auth">
         <p>

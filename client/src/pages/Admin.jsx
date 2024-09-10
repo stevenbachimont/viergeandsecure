@@ -15,7 +15,7 @@ function Admin({ alias }) {
   // Check if user is admin on component mount
   useEffect(() => {
     if (!isAdmin) {
-      navigate("/"); // Redirect to home if not admin
+      navigate("/");
     }
   }, [isAdmin, navigate]);
 
@@ -48,13 +48,10 @@ function Admin({ alias }) {
   };
 
 
-  // Fetch users when the verification filter changes
   useEffect(() => {
     fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showUsersVerified]);
-
-
 
   // Handle radio button change for users filter
   const handleUsersRadioChange = (event) => {
@@ -63,7 +60,7 @@ function Admin({ alias }) {
 
   const updateUser = async (userId, isAdmin, isVerify) => {
     try {
-      const response = await fetch(`http://localhost:3310/api/user/admin-verify`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/admin-verify`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -79,15 +76,9 @@ function Admin({ alias }) {
     }
   };
 
-
-
-
   return (
     <div>
       <h1 className="admin-title">Espace Admin</h1>
-      <h2 className="admin-welcome">
-        Bienvenue {alias}, vous avez tous les pouvoirs !
-      </h2>
       <div className="user-container">
         <label>
           Afficher les utilisateurs :

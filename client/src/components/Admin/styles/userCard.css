@@ -1,11 +1,13 @@
 .user-card {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
   align-items: center;
-  background-color: #535252;
+  border: 1px solid #f4f4f4;
+  background-color: rgba(83, 82, 82, 0.26);
 }
 
 .user-info {
@@ -14,9 +16,9 @@
 }
 
 .user-profile-picture {
-  width: 133px; /* Taille fixe pour les images */
-  height: 200px; /* Taille fixe pour les images */
-  object-fit: cover; /* Ajustement pour que l'image s'adapte à la taille définie */
+  width: 120px;
+  height: auto;
+  object-fit: cover;
   border-radius: 5px;
   margin-right: 10px;
 }

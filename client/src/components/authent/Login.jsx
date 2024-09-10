@@ -35,6 +35,7 @@ function Login({ showRegister }) {
   };
 
   return (
+      <main>
     <form id="loginForm" onSubmit={handleLoginClick}>
       <h2>Login</h2>
       <div className="form-group">
@@ -70,6 +71,7 @@ function Login({ showRegister }) {
         </button>
       </div>
     </form>
+      </main>
   );
 }
 

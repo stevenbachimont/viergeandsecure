@@ -153,7 +153,7 @@ function Profile() {
         </div>
         <div className="infos-profile-container">
           <div className="alias-container">
-            {isConnected && <h2 className="alias-text">Alias: {alias}</h2>}
+            {isConnected && <h2 className="alias-text">{alias}</h2>}
           </div>
 
           <div className="disconnect-button-container">

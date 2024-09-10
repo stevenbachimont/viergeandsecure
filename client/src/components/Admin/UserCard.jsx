@@ -1,3 +1,5 @@
+import "./styles/userCard.css"
+
 // eslint-disable-next-line react/prop-types
 function UserCard({ user, onUpdateUser }) {
     // eslint-disable-next-line react/prop-types

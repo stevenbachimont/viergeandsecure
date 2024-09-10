@@ -1,5 +1,18 @@
 /* CSS Mobile first */
 
+main {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  border: 1px solid #f4f4f4;
+  background-color: rgba(83, 82, 82, 0.26);
+}
+
 /* Profile Picture Styling */
 .profile-picture {
   width: 100%; /* Increase width for a larger profile picture */
@@ -18,13 +31,12 @@
 
 /* Styling for Alias Container */
 .alias-container {
-  background-color: #535252;
   padding: 20px;
   border-radius: 10px;
   width: 50%;
   max-width: 300px;
   text-align: center;
-  margin: auto;
+
   margin-top: 15px;
 }
 
