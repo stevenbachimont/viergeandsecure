@@ -15,7 +15,7 @@ services:
       DB_USER: ${USER_NAME}
       DB_PASSWORD: ${USER_PASSWORD}
       DB_NAME: ${DB_NAME}
-      VITE_BACKEND_URL: ""
+      VITE_BACKEND_URL: "https://stevenbachimont.com/test/api"
       PROJECT_NAME_SPECIFIC_SAMPLE: ${PROJECT_NAME_SPECIFIC_SAMPLE}
     networks:
       - proxy
@@ -23,8 +23,9 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.${PROJECT_NAME:-project}-secure.entrypoints=websecure"
-      - "traefik.http.routers.${PROJECT_NAME:-project}-secure.rule=Host(`${PROJECT_NAME:-project}.${HOST:-localhost}`)"
+      - "traefik.http.routers.${PROJECT_NAME:-project}-secure.rule=Host(`stevenbachimont.com`) && PathPrefix(`/test`)"
       - "traefik.http.services.${PROJECT_NAME:-project}.loadbalancer.server.port=3310"
+      - "traefik.http.routers.${PROJECT_NAME:-project}-secure.tls.certresolver=letsencrypt"
 
 networks:
   proxy:

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-Attendre que le service de base de données soit prêt
+# Attendre que le service de base de données soit prêt
 
 until nc -z -v -w30 $DB_HOST $DB_PORT
 do
